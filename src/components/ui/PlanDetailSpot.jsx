@@ -11,7 +11,7 @@ function PremiumTag() {
         />
 
         <img
-          src="/pricing/main-image.png"
+          src="/One%20Click%20Asstes/Main%20Image.png"
           alt=""
           width={16}
           height={25}
@@ -22,7 +22,7 @@ function PremiumTag() {
         />
 
         <img
-          src="/pricing/main-image.png"
+          src="/One%20Click%20Asstes/Main%20Image.png"
           alt=""
           width={16}
           height={25}
