@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #52b4da;
+  --color-brand-light: #f5f7fe;
+  --color-brand-white: #fffffe;
+  --color-global-badge: #c2eeff;
+  --color-global-ink: #11142d;
+  --color-global-copy: rgb(17 20 45 / 64.28%);
+  --color-faq-copy: #6d6e7a;
+  --color-faq-button-border: rgb(83 132 218 / 69.56%);
+  --color-help-bg-base: #e8e8fd;
+  --color-help-eyebrow: #1e3e85;
+  --color-help-body: #767784;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    @apply m-0 bg-brand-white font-sans antialiased;
+  }
+}
+
+@layer components {
+  .page-x {
+    @apply px-6 sm:px-8 md:px-12 lg:px-[51px];
+  }
+
+  .help-cta-bg {
+    background-color: var(--color-help-bg-base);
+    background-image: linear-gradient(
+      132.56deg,
+      rgb(87 153 235 / 10%) 5.63%,
+      rgb(159 116 251 / 10%) 106.18%
+    );
+  }
+
+  .artwork-scale {
+    --art-canvas-w: 451px;
+    --art-canvas-h: 454px;
+    --art-bleed-left: 0px;
+    --art-bleed-right: 0px;
+    --art-visual-w: calc(var(--art-canvas-w) + var(--art-bleed-left) + var(--art-bleed-right));
+    --art-available: calc(100vw - 3rem);
+    --art-scale: calc(var(--art-available) / var(--art-visual-w));
+    position: relative;
+    box-sizing: border-box;
+    width: var(--art-available);
+    padding-left: calc(var(--art-bleed-left) * var(--art-scale));
+    height: calc(var(--art-canvas-h) * var(--art-scale));
+  }
+
+  .artwork-scale-inner {
+    position: relative;
+    width: var(--art-canvas-w);
+    height: var(--art-canvas-h);
+    transform: scale(var(--art-scale));
+    transform-origin: top left;
+  }
+
+  @media (min-width: 1024px) {
+    .artwork-scale {
+      --art-scale: 1;
+      box-sizing: content-box;
+      width: var(--art-canvas-w);
+      padding-left: 0;
+      height: var(--art-canvas-h);
+    }
+
+    .artwork-scale-inner {
+      transform: none;
+    }
+  }
+
+  .artwork-scale--global {
+    --art-bleed-left: 60px;
+    --art-bleed-right: 85px;
+  }
+
+  .artwork-scale--showcase {
+    --art-bleed-left: 20px;
+    --art-bleed-right: 64px;
+  }
+
+  .artwork-scale--membership {
+    --art-canvas-h: 483px;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay {
+    transition-delay: 0.15s;
+  }
+}
