@@ -31,7 +31,7 @@ function LazyWhenVisible({
     <div
       ref={ref}
       className={className}
-      style={visible ? undefined : { minHeight }}
+      style={{ minHeight }}
     >
       {visible ? children : null}
     </div>

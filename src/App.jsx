@@ -11,36 +11,52 @@ const CommonQuestions = lazy(() => import("./components/sections/CommonQuestions
 const OneClickAway = lazy(() => import("./components/sections/OneClickAway"));
 const Footer = lazy(() => import("./components/sections/Footer"));
 
+function SectionFallback({ minHeight }) {
+  return <div aria-hidden style={{ minHeight }} />;
+}
+
 function App() {
   return (
     <>
       <main className="overflow-x-clip">
         <Hero />
-        <Suspense fallback={null}>
-          <LazyWhenVisible minHeight={520} rootMargin="0px 0px -120px 0px">
+        <LazyWhenVisible minHeight={520} rootMargin="0px 0px -120px 0px">
+          <Suspense fallback={<SectionFallback minHeight={520} />}>
             <GlobalReach />
-          </LazyWhenVisible>
-          <LazyWhenVisible minHeight={520} rootMargin="0px 0px -120px 0px">
+          </Suspense>
+        </LazyWhenVisible>
+        <LazyWhenVisible minHeight={520} rootMargin="0px 0px -120px 0px">
+          <Suspense fallback={<SectionFallback minHeight={520} />}>
             <FeeFreeForever />
-          </LazyWhenVisible>
-          <LazyWhenVisible minHeight={520} rootMargin="0px 0px -120px 0px">
+          </Suspense>
+        </LazyWhenVisible>
+        <LazyWhenVisible minHeight={520} rootMargin="0px 0px -120px 0px">
+          <Suspense fallback={<SectionFallback minHeight={520} />}>
             <ShowcaseTalents />
-          </LazyWhenVisible>
-          <LazyWhenVisible minHeight={560} rootMargin="0px 0px -120px 0px">
+          </Suspense>
+        </LazyWhenVisible>
+        <LazyWhenVisible minHeight={560} rootMargin="0px 0px -120px 0px">
+          <Suspense fallback={<SectionFallback minHeight={560} />}>
             <HelpCta />
-          </LazyWhenVisible>
-          <LazyWhenVisible minHeight={480} rootMargin="0px 0px -120px 0px">
+          </Suspense>
+        </LazyWhenVisible>
+        <LazyWhenVisible minHeight={480} rootMargin="0px 0px -120px 0px">
+          <Suspense fallback={<SectionFallback minHeight={480} />}>
             <CommonQuestions />
-          </LazyWhenVisible>
-          <div className="relative overflow-x-clip overflow-y-visible">
-            <LazyWhenVisible minHeight={420} rootMargin="0px 0px -120px 0px">
+          </Suspense>
+        </LazyWhenVisible>
+        <div className="relative overflow-x-clip overflow-y-visible">
+          <LazyWhenVisible minHeight={420} rootMargin="0px 0px -120px 0px">
+            <Suspense fallback={<SectionFallback minHeight={420} />}>
               <OneClickAway />
-            </LazyWhenVisible>
-            <LazyWhenVisible minHeight={280} rootMargin="0px 0px -120px 0px">
+            </Suspense>
+          </LazyWhenVisible>
+          <LazyWhenVisible minHeight={280} rootMargin="0px 0px -120px 0px">
+            <Suspense fallback={<SectionFallback minHeight={280} />}>
               <Footer />
-            </LazyWhenVisible>
-          </div>
-        </Suspense>
+            </Suspense>
+          </LazyWhenVisible>
+        </div>
       </main>
       <ScrollToTop />
     </>
